@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhj.gogo.basic.dao.GogoStaticDataMapper">
+  <resultMap id="BaseResultMap" type="com.lhj.gogo.basic.model.GogoStaticData">
+    <id column="DATA_ID" jdbcType="DECIMAL" property="dataId" />
+    <result column="DATA_CN" jdbcType="DECIMAL" property="dataCn" />
+    <result column="DATA_VALUE" jdbcType="DECIMAL" property="dataValue" />
+    <result column="DATA_KEY" jdbcType="VARCHAR" property="dataKey" />
+    <result column="DATA_NAME" jdbcType="VARCHAR" property="dataName" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DATA_ID, DATA_CN, DATA_VALUE, DATA_KEY, DATA_NAME, STATE, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gogo_static_data
+    where DATA_ID = #{dataId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from gogo_static_data
+    where DATA_ID = #{dataId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.lhj.gogo.basic.model.GogoStaticData">
+    insert into gogo_static_data (DATA_ID, DATA_CN, DATA_VALUE, 
+      DATA_KEY, DATA_NAME, STATE, 
+      CREATE_TIME)
+    values (#{dataId,jdbcType=DECIMAL}, #{dataCn,jdbcType=DECIMAL}, #{dataValue,jdbcType=DECIMAL}, 
+      #{dataKey,jdbcType=VARCHAR}, #{dataName,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhj.gogo.basic.model.GogoStaticData">
+    insert into gogo_static_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataId != null">
+        DATA_ID,
+      </if>
+      <if test="dataCn != null">
+        DATA_CN,
+      </if>
+      <if test="dataValue != null">
+        DATA_VALUE,
+      </if>
+      <if test="dataKey != null">
+        DATA_KEY,
+      </if>
+      <if test="dataName != null">
+        DATA_NAME,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataId != null">
+        #{dataId,jdbcType=DECIMAL},
+      </if>
+      <if test="dataCn != null">
+        #{dataCn,jdbcType=DECIMAL},
+      </if>
+      <if test="dataValue != null">
+        #{dataValue,jdbcType=DECIMAL},
+      </if>
+      <if test="dataKey != null">
+        #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="dataName != null">
+        #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhj.gogo.basic.model.GogoStaticData">
+    update gogo_static_data
+    <set>
+      <if test="dataCn != null">
+        DATA_CN = #{dataCn,jdbcType=DECIMAL},
+      </if>
+      <if test="dataValue != null">
+        DATA_VALUE = #{dataValue,jdbcType=DECIMAL},
+      </if>
+      <if test="dataKey != null">
+        DATA_KEY = #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="dataName != null">
+        DATA_NAME = #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DATA_ID = #{dataId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhj.gogo.basic.model.GogoStaticData">
+    update gogo_static_data
+    set DATA_CN = #{dataCn,jdbcType=DECIMAL},
+      DATA_VALUE = #{dataValue,jdbcType=DECIMAL},
+      DATA_KEY = #{dataKey,jdbcType=VARCHAR},
+      DATA_NAME = #{dataName,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where DATA_ID = #{dataId,jdbcType=DECIMAL}
+  </update>
+</mapper>
