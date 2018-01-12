@@ -53,6 +53,8 @@ public class WelcomeController {
 		user.setState("10A");
 		logger.debug("test", user);
 		userService.insertSelective(user);
+		model.put("time", new Date());
+		model.put("message", this.message);
 		return "welcome";
 	}
 	@GetMapping("/user1")
@@ -63,6 +65,8 @@ public class WelcomeController {
 		user.setState("10A");
 		logger.debug("test", user);
 		gogoUserMapper.insertSelective(user);
+		model.put("time", new Date());
+		model.put("message", this.message);
 		return "welcome";
 	}
 }
