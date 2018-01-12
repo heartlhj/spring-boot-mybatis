@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhj.gogo.basic.dao.GogoResourceMapper">
+  <resultMap id="BaseResultMap" type="com.lhj.gogo.basic.model.GogoResource">
+    <id column="RESOURCE_ID" jdbcType="DECIMAL" property="resourceId" />
+    <result column="RESOURCE_NAME" jdbcType="DECIMAL" property="resourceName" />
+    <result column="RESOURCE_TYPE" jdbcType="VARCHAR" property="resourceType" />
+    <result column="RESOURCE_PATH_TYPE" jdbcType="VARCHAR" property="resourcePathType" />
+    <result column="RESOURCE_PATH" jdbcType="VARCHAR" property="resourcePath" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RESOURCE_ID, RESOURCE_NAME, RESOURCE_TYPE, RESOURCE_PATH_TYPE, RESOURCE_PATH, STATE, 
+    CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gogo_resource
+    where RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from gogo_resource
+    where RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.lhj.gogo.basic.model.GogoResource">
+    insert into gogo_resource (RESOURCE_ID, RESOURCE_NAME, RESOURCE_TYPE, 
+      RESOURCE_PATH_TYPE, RESOURCE_PATH, STATE, 
+      CREATE_TIME)
+    values (#{resourceId,jdbcType=DECIMAL}, #{resourceName,jdbcType=DECIMAL}, #{resourceType,jdbcType=VARCHAR}, 
+      #{resourcePathType,jdbcType=VARCHAR}, #{resourcePath,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhj.gogo.basic.model.GogoResource">
+    insert into gogo_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resourceId != null">
+        RESOURCE_ID,
+      </if>
+      <if test="resourceName != null">
+        RESOURCE_NAME,
+      </if>
+      <if test="resourceType != null">
+        RESOURCE_TYPE,
+      </if>
+      <if test="resourcePathType != null">
+        RESOURCE_PATH_TYPE,
+      </if>
+      <if test="resourcePath != null">
+        RESOURCE_PATH,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="resourceName != null">
+        #{resourceName,jdbcType=DECIMAL},
+      </if>
+      <if test="resourceType != null">
+        #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcePathType != null">
+        #{resourcePathType,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcePath != null">
+        #{resourcePath,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhj.gogo.basic.model.GogoResource">
+    update gogo_resource
+    <set>
+      <if test="resourceName != null">
+        RESOURCE_NAME = #{resourceName,jdbcType=DECIMAL},
+      </if>
+      <if test="resourceType != null">
+        RESOURCE_TYPE = #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcePathType != null">
+        RESOURCE_PATH_TYPE = #{resourcePathType,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcePath != null">
+        RESOURCE_PATH = #{resourcePath,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhj.gogo.basic.model.GogoResource">
+    update gogo_resource
+    set RESOURCE_NAME = #{resourceName,jdbcType=DECIMAL},
+      RESOURCE_TYPE = #{resourceType,jdbcType=VARCHAR},
+      RESOURCE_PATH_TYPE = #{resourcePathType,jdbcType=VARCHAR},
+      RESOURCE_PATH = #{resourcePath,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+  </update>
+</mapper>
