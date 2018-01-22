@@ -1,10 +1,13 @@
 package com.lhj.gogo.basic.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class GogoUser {
-    private Long userId;
+public class GogoUser implements Serializable{
+	private static final long serialVersionUID = -7030595829935709640L;
+
+	private Long userId;
 
     private BigDecimal usreName;
 

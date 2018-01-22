@@ -17,6 +17,8 @@
 package com.lhj.gogo.basic;
 
 
+
+import org.apache.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,23 +26,25 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @SpringBootApplication
 @PropertySource(value = { "classpath:env.properties","classpath:httpclient.properties" })
-@MapperScan("com.lhj.gogo.basic.dao")
-@ComponentScan(basePackages = "com.lhj.gogo.basic")
+@MapperScan("com.lhj.gogo.**.dao")
+@ComponentScan(basePackages = "com.lhj.gogo")
 public class SampleWebFreeMarkerApplication  extends SpringBootServletInitializer{
 
-
+	private static final Logger logger = Logger.getLogger(SampleWebFreeMarkerApplication.class);
 	    @Override
 	    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 	        return builder.sources(SampleWebFreeMarkerApplication.class);
 	    }
+	    
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleWebFreeMarkerApplication.class, args);
+	    SpringApplication.run(SampleWebFreeMarkerApplication.class, args);
 	}
 
 }

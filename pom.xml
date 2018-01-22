@@ -14,7 +14,21 @@
   <modules>
   	<module>gogo-basic</module>
   	<module>gogo-web</module>
+  	<module>gogo-admin</module>
+  	<module>gogo-start</module>
+  	<module>gogo-system</module>
+  	
+  	<module>gogo-controller</module>
   </modules>
+   
+  <dependencies>
+ 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency> 
+		
+  </dependencies>
+
   <build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
@@ -41,15 +55,5 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!-- 配置Tomcat插件 -->
-				<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<version>2.2</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		</build>
 </project>

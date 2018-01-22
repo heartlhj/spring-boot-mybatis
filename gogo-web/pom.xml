@@ -14,20 +14,20 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
- 		<dependency>
-			<groupId>com.lhj.gogoing</groupId>
-			<artifactId>gogo-basic</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>war</type>
-		</dependency>
-		
 		<dependency>
 			<groupId>com.lhj.gogoing</groupId>
-			<artifactId>gogo-basic</artifactId>
+			<artifactId>gogo-controller</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<type>jar</type>
-			<classifier>classes</classifier>
-		</dependency>
+			<type>war</type>
+            </dependency>
+
+			<dependency>
+				<groupId>com.lhj.gogoing</groupId>
+				<artifactId>gogo-controller</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>jar</type>
+				<classifier>classes</classifier>
+			</dependency>
   		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -36,59 +36,128 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+	<!-- Mybatis -->
+	 
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+	      <groupId>mysql</groupId>
+	      <artifactId>mysql-connector-java</artifactId>
+	    </dependency>
+		<dependency>
+	     <groupId>junit</groupId>
+	     <artifactId>junit</artifactId>
+	     <scope>test</scope>
+	   </dependency>
+ 	 <!-- 连接池 -->
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp-spring</artifactId>
+			<version>0.8.0.RELEASE</version>
+		</dependency>
+		<!--二维码 -->
+		<dependency>
+			<groupId>com.lhj</groupId>
+			<artifactId>com.lhj.image</artifactId>
+			<version>1.0</version>
+		</dependency>
+		 <dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.4.9</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.4.5</version>
+			 <exclusions>  
+                <exclusion>  
+                    <artifactId>jmxtools</artifactId>  
+                    <groupId>com.sun.jdmk</groupId>  
+                </exclusion>  
+                <exclusion>  
+                    <artifactId>jmxri</artifactId>  
+                    <groupId>com.sun.jmx</groupId>  
+                </exclusion>  
+                <exclusion>  
+                    <artifactId>jms</artifactId>  
+                    <groupId>javax.jms</groupId>  
+                </exclusion>  
+                <exclusion>  
+                    <groupId>log4j</groupId>  
+                    <artifactId>log4j</artifactId>  
+                </exclusion>  
+                <exclusion>  
+                    <artifactId>slf4j-log4j12</artifactId>  
+                    <groupId>org.slf4j</groupId>  
+                </exclusion>  
+            </exclusions>  
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.1</version>
+		</dependency>
+         <dependency>  
+            <groupId>org.springframework.boot</groupId>  
+            <artifactId>spring-boot-configuration-processor</artifactId>  
+            <optional>true</optional>  
+        </dependency> 
   </dependencies>
   <packaging>war</packaging>
+  <build>  
+  <defaultGoal>install</defaultGoal>
+  <finalName>gogo-web</finalName>
+        <plugins>  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-compiler-plugin</artifactId>  
+                <configuration>  
+                    <source>1.8</source>  
+                    <target>1.8</target>  
+                    <encoding>UTF-8</encoding>  
+                </configuration>  
   
-  <build>
-		<finalName>gogo-web</finalName>
-		<defaultGoal>install</defaultGoal>
-
-		<plugins>
-
-			<!-- 使用Maven插件合并被合并的Web项目 -->
-			<plugin>
+            </plugin>  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-resources-plugin</artifactId>  
+                <configuration>  
+                    <encoding>UTF-8</encoding>  
+                </configuration>  
+            </plugin> 
+          
+            <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.2</version>
 				<configuration>
-					<packagingExcludes>WEB-INF/web.xml</packagingExcludes>
-					<attachClasses>true</attachClasses> <!-- 把class打包jar作为附件 -->
-					<archiveClasses>true</archiveClasses><!-- 把class打成jar包 -->
-					<!-- 把配置文件留在外面 -->
-					<webResources>
-						<resource>
-							<directory>src/main/resources</directory>
-							<targetPath>WEB-INF/classes</targetPath>
-							<filtering>true</filtering>
-						</resource>
-					</webResources>
-					<!-- 这里来源于上面合并的war包，添加依赖 -->
 					<overlays>
-						 <overlay> 
-							 <groupId>com.lhj.gogoing</groupId> 
-							 <artifactId>gogo-basic</artifactId> 
+						<overlay>
+							<groupId>com.lhj.gogoing</groupId>
+							<artifactId>gogo-controller</artifactId>
 						</overlay>
+						
 					</overlays>
 				</configuration>
 			</plugin>
-
+			
 			<plugin>
 				<groupId>org.appfuse.plugins</groupId>
 				<artifactId>maven-warpath-plugin</artifactId>
 				<version>3.0.0</version>
 				<extensions>true</extensions>
-				<!-- <executions> <execution> <goals> <goal>add-classes</goal> </goals> 
-					</execution> </executions> -->
 			</plugin>
-		</plugins>
-
-		<resources>
+			 <resources>
 			<!-- 排除class里面的这些配置文件 -->
 			<resource>
 				<directory>src/main/resources</directory>
@@ -98,6 +167,6 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-
-	</build>
+        </plugins>  
+    </build>  
 </project>
