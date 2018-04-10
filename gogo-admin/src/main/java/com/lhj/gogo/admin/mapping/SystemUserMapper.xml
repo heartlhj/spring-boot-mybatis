@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhj.gogo.admin.dao.SystemUserMapper">
+  <resultMap id="BaseResultMap" type="com.lhj.gogo.admin.model.SystemUser">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFIED_TIME" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="SORT" jdbcType="VARCHAR" property="sort" />
+    <result column="USER_PHONE" jdbcType="VARCHAR" property="userPhone" />
+    <result column="USER_EMAIL" jdbcType="VARCHAR" property="userEmail" />
+    <result column="USER_REAL_NAME" jdbcType="VARCHAR" property="userRealName" />
+    <result column="USER_NICK_NAME" jdbcType="VARCHAR" property="userNickName" />
+    <result column="SALT" jdbcType="VARCHAR" property="salt" />
+    <result column="USER_SEX" jdbcType="VARCHAR" property="userSex" />
+    <result column="RAMARK" jdbcType="VARCHAR" property="ramark" />
+    <result column="PWD" jdbcType="VARCHAR" property="pwd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CREATE_TIME, MODIFIED_TIME, STATE, SORT, USER_PHONE, USER_EMAIL, USER_REAL_NAME, 
+    USER_NICK_NAME, SALT, USER_SEX, RAMARK, PWD
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system_user
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from system_user
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lhj.gogo.admin.model.SystemUser">
+    insert into system_user (ID, CREATE_TIME, MODIFIED_TIME, 
+      STATE, SORT, USER_PHONE, 
+      USER_EMAIL, USER_REAL_NAME, USER_NICK_NAME, 
+      SALT, USER_SEX, RAMARK, 
+      PWD)
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=VARCHAR}, #{sort,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{userRealName,jdbcType=VARCHAR}, #{userNickName,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, #{ramark,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhj.gogo.admin.model.SystemUser">
+    insert into system_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifiedTime != null">
+        MODIFIED_TIME,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="sort != null">
+        SORT,
+      </if>
+      <if test="userPhone != null">
+        USER_PHONE,
+      </if>
+      <if test="userEmail != null">
+        USER_EMAIL,
+      </if>
+      <if test="userRealName != null">
+        USER_REAL_NAME,
+      </if>
+      <if test="userNickName != null">
+        USER_NICK_NAME,
+      </if>
+      <if test="salt != null">
+        SALT,
+      </if>
+      <if test="userSex != null">
+        USER_SEX,
+      </if>
+      <if test="ramark != null">
+        RAMARK,
+      </if>
+      <if test="pwd != null">
+        PWD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userRealName != null">
+        #{userRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null">
+        #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="ramark != null">
+        #{ramark,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhj.gogo.admin.model.SystemUser">
+    update system_user
+    <set>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        MODIFIED_TIME = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        SORT = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        USER_PHONE = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        USER_EMAIL = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userRealName != null">
+        USER_REAL_NAME = #{userRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null">
+        USER_NICK_NAME = #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        SALT = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        USER_SEX = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="ramark != null">
+        RAMARK = #{ramark,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        PWD = #{pwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhj.gogo.admin.model.SystemUser">
+    update system_user
+    set CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFIED_TIME = #{modifiedTime,jdbcType=TIMESTAMP},
+      STATE = #{state,jdbcType=VARCHAR},
+      SORT = #{sort,jdbcType=VARCHAR},
+      USER_PHONE = #{userPhone,jdbcType=VARCHAR},
+      USER_EMAIL = #{userEmail,jdbcType=VARCHAR},
+      USER_REAL_NAME = #{userRealName,jdbcType=VARCHAR},
+      USER_NICK_NAME = #{userNickName,jdbcType=VARCHAR},
+      SALT = #{salt,jdbcType=VARCHAR},
+      USER_SEX = #{userSex,jdbcType=VARCHAR},
+      RAMARK = #{ramark,jdbcType=VARCHAR},
+      PWD = #{pwd,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+   <select id="selectUserList" resultMap="BaseResultMap" parameterType="com.lhj.gogo.admin.model.SystemUser" >
+    select
+    <include refid="Base_Column_List" />
+    from system_user
+    <if test="pageCurrent != null and pageSize != null and pageSize > 0" >
+      limit ${pageCurrent} , ${pageSize}
+    </if>
+  </select>
+  
+  
+   <select id="selectUserListCount"  resultType="java.lang.Long" parameterType="com.lhj.gogo.admin.model.SystemUser" >
+    select
+   COUNT(0)
+    from system_user
+    <if test="pageCurrent != null and pageSize != null and pageSize > 0" >
+      limit ${pageCurrent} , ${pageSize}
+    </if>
+  </select>
+  
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhj.gogo.admin.dao.SysStaticMapper">
+  <resultMap id="BaseResultMap" type="com.lhj.gogo.admin.model.SysStatic">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="STATIC_KEY" jdbcType="VARCHAR" property="staticKey" />
+    <result column="STATIC_VALUE" jdbcType="VARCHAR" property="staticValue" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="STATIC_TYPE" jdbcType="VARCHAR" property="staticType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, STATIC_KEY, STATIC_VALUE, STATE, STATIC_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_static
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_static
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lhj.gogo.admin.model.SysStatic">
+    insert into sys_static (ID, STATIC_KEY, STATIC_VALUE, 
+      STATE, STATIC_TYPE)
+    values (#{id,jdbcType=VARCHAR}, #{staticKey,jdbcType=VARCHAR}, #{staticValue,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{staticType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhj.gogo.admin.model.SysStatic">
+    insert into sys_static
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="staticKey != null">
+        STATIC_KEY,
+      </if>
+      <if test="staticValue != null">
+        STATIC_VALUE,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="staticType != null">
+        STATIC_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="staticKey != null">
+        #{staticKey,jdbcType=VARCHAR},
+      </if>
+      <if test="staticValue != null">
+        #{staticValue,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="staticType != null">
+        #{staticType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhj.gogo.admin.model.SysStatic">
+    update sys_static
+    <set>
+      <if test="staticKey != null">
+        STATIC_KEY = #{staticKey,jdbcType=VARCHAR},
+      </if>
+      <if test="staticValue != null">
+        STATIC_VALUE = #{staticValue,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="staticType != null">
+        STATIC_TYPE = #{staticType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhj.gogo.admin.model.SysStatic">
+    update sys_static
+    set STATIC_KEY = #{staticKey,jdbcType=VARCHAR},
+      STATIC_VALUE = #{staticValue,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      STATIC_TYPE = #{staticType,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

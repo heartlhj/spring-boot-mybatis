@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhj.gogo.admin.dao.GogoCommentMapper">
+  <resultMap id="BaseResultMap" type="com.lhj.gogo.admin.model.GogoComment">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="TEXT" jdbcType="VARCHAR" property="text" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="CTEATE_TIME" jdbcType="TIMESTAMP" property="cteateTime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="RESOURCE_ID" jdbcType="VARCHAR" property="resourceId" />
+    <result column="LAYER" jdbcType="DECIMAL" property="layer" />
+    <result column="P_LAYER" jdbcType="DECIMAL" property="pLayer" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TEXT, USER_ID, CTEATE_TIME, REMARK, STATE, RESOURCE_ID, LAYER, P_LAYER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gogo_comment
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from gogo_comment
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lhj.gogo.admin.model.GogoComment">
+    insert into gogo_comment (ID, TEXT, USER_ID, 
+      CTEATE_TIME, REMARK, STATE, 
+      RESOURCE_ID, LAYER, P_LAYER
+      )
+    values (#{id,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{cteateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{resourceId,jdbcType=VARCHAR}, #{layer,jdbcType=DECIMAL}, #{pLayer,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhj.gogo.admin.model.GogoComment">
+    insert into gogo_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="text != null">
+        TEXT,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="cteateTime != null">
+        CTEATE_TIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="resourceId != null">
+        RESOURCE_ID,
+      </if>
+      <if test="layer != null">
+        LAYER,
+      </if>
+      <if test="pLayer != null">
+        P_LAYER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null">
+        #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="cteateTime != null">
+        #{cteateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null">
+        #{layer,jdbcType=DECIMAL},
+      </if>
+      <if test="pLayer != null">
+        #{pLayer,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhj.gogo.admin.model.GogoComment">
+    update gogo_comment
+    <set>
+      <if test="text != null">
+        TEXT = #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="cteateTime != null">
+        CTEATE_TIME = #{cteateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null">
+        RESOURCE_ID = #{resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null">
+        LAYER = #{layer,jdbcType=DECIMAL},
+      </if>
+      <if test="pLayer != null">
+        P_LAYER = #{pLayer,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhj.gogo.admin.model.GogoComment">
+    update gogo_comment
+    set TEXT = #{text,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      CTEATE_TIME = #{cteateTime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      RESOURCE_ID = #{resourceId,jdbcType=VARCHAR},
+      LAYER = #{layer,jdbcType=DECIMAL},
+      P_LAYER = #{pLayer,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectCommentList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gogo_comment
+    where RESOURCE_ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="selectCommentListCount" parameterType="java.lang.String" resultType="java.lang.Long">
+    select 
+    COUNT(*)
+    from gogo_comment
+    where RESOURCE_ID = #{id,jdbcType=VARCHAR}
+  </select>
+</mapper>
