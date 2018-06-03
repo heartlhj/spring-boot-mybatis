@@ -3,11 +3,7 @@
 
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-<!-- 不缓存，测试阶段，后面上线可去掉 -->
-<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
-<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
-<META HTTP-EQUIV="Expires" CONTENT="0"> 
-<!-- 不缓存，测试阶段，后面上线可去掉 -->
+
 
 <head>
 <#include "index-head.ftl">	

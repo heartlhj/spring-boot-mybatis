@@ -16,4 +16,6 @@ public interface GogoUserMapper {
     int updateByPrimaryKeySelective(GogoUser record);
 
     int updateByPrimaryKey(GogoUser record);
+
+	GogoUser selectGogoUserByUser(GogoUser user);
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.lhj.gogo.admin.dao.GogoUserMapper">
   <resultMap id="BaseResultMap" type="com.lhj.gogo.admin.model.GogoUser">
     <id column="USER_ID" jdbcType="DECIMAL" property="userId" />
-    <result column="USRE_NAME" jdbcType="DECIMAL" property="usreName" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
     <result column="USER_PASSWORD" jdbcType="VARCHAR" property="userPassword" />
     <result column="USER_TYPE" jdbcType="VARCHAR" property="userType" />
     <result column="FILE_PATH" jdbcType="VARCHAR" property="filePath" />
@@ -11,7 +11,7 @@
     <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    USER_ID, USRE_NAME, USER_PASSWORD, USER_TYPE, FILE_PATH, STATE, CREATE_TIME
+    USER_ID, USER_NAME, USER_PASSWORD, USER_TYPE, FILE_PATH, STATE, CREATE_TIME
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
     select 
@@ -24,10 +24,10 @@
     where USER_ID = #{userId,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="com.lhj.gogo.admin.model.GogoUser">
-    insert into gogo_user (USER_ID, USRE_NAME, USER_PASSWORD, 
+    insert into gogo_user (USER_ID, USER_NAME, USER_PASSWORD, 
       USER_TYPE, FILE_PATH, STATE, 
       CREATE_TIME)
-    values (#{userId,jdbcType=DECIMAL}, #{usreName,jdbcType=DECIMAL}, #{userPassword,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=DECIMAL}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
       #{userType,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
@@ -37,8 +37,8 @@
       <if test="userId != null">
         USER_ID,
       </if>
-      <if test="usreName != null">
-        USRE_NAME,
+      <if test="userName != null">
+        USER_NAME,
       </if>
       <if test="userPassword != null">
         USER_PASSWORD,
@@ -60,8 +60,8 @@
       <if test="userId != null">
         #{userId,jdbcType=DECIMAL},
       </if>
-      <if test="usreName != null">
-        #{usreName,jdbcType=DECIMAL},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
       <if test="userPassword != null">
         #{userPassword,jdbcType=VARCHAR},
@@ -83,8 +83,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lhj.gogo.admin.model.GogoUser">
     update gogo_user
     <set>
-      <if test="usreName != null">
-        USRE_NAME = #{usreName,jdbcType=DECIMAL},
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="userPassword != null">
         USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
@@ -106,7 +106,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lhj.gogo.admin.model.GogoUser">
     update gogo_user
-    set USRE_NAME = #{usreName,jdbcType=DECIMAL},
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
       USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
       USER_TYPE = #{userType,jdbcType=VARCHAR},
       FILE_PATH = #{filePath,jdbcType=VARCHAR},
@@ -114,4 +114,19 @@
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
     where USER_ID = #{userId,jdbcType=DECIMAL}
   </update>
+  
+   <select id="selectGogoUserByUser" parameterType="com.lhj.gogo.admin.model.GogoUser" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gogo_user
+    <where>
+    	<if test="userId">
+    	USER_ID = #{userId,jdbcType=DECIMAL}
+    	</if>
+    	
+    	<if test="userName">
+    	USER_NAME = #{userName,jdbcType=VARCHAR}
+    	</if>
+    </where> 
+  </select>
 </mapper>

@@ -9,7 +9,7 @@ public class GogoUser implements Serializable{
 
 	private Long userId;
 
-    private BigDecimal usreName;
+    private String userName;
 
     private String userPassword;
 
@@ -20,8 +20,20 @@ public class GogoUser implements Serializable{
     private String state;
 
     private Date createTime;
+    
+    private String checkbox;
+    
+    
 
-    public Long getUserId() {
+    public String getCheckbox() {
+		return checkbox;
+	}
+
+	public void setCheckbox(String checkbox) {
+		this.checkbox = checkbox;
+	}
+
+	public Long getUserId() {
         return userId;
     }
 
@@ -29,12 +41,12 @@ public class GogoUser implements Serializable{
         this.userId = userId;
     }
 
-    public BigDecimal getUsreName() {
-        return usreName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsreName(BigDecimal usreName) {
-        this.usreName = usreName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserPassword() {

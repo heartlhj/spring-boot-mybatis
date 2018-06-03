@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.lhj.gogo.admin.enums.UserSexEnum;
 import com.lhj.gogo.admin.enums.UserStatusEnum;
@@ -52,6 +53,14 @@ public class IndexController extends BaseController {
 	public String index(@RequestParam(value = "pageNum", defaultValue = "0") int pageCurrent, @RequestParam(value = "numPerPage", defaultValue = "20") int pageSize, SystemUser qo, ModelMap modelMap){
 		modelMap.put("massage", "hello work");
 		return "/index/index";
+	}
+	
+	@RequestMapping(value = "/mnue/regist")
+	public ModelAndView regist(ModelMap modelMap){
+		//业务逻辑开始
+		ModelAndView pageView = new ModelAndView("/index/regist");
+				
+		return pageView;
 	}
 	
 	

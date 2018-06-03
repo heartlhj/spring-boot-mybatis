@@ -15,10 +15,11 @@
     <result column="USER_SEX" jdbcType="VARCHAR" property="userSex" />
     <result column="RAMARK" jdbcType="VARCHAR" property="ramark" />
     <result column="PWD" jdbcType="VARCHAR" property="pwd" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
   </resultMap>
   <sql id="Base_Column_List">
     ID, CREATE_TIME, MODIFIED_TIME, STATE, SORT, USER_PHONE, USER_EMAIL, USER_REAL_NAME, 
-    USER_NICK_NAME, SALT, USER_SEX, RAMARK, PWD
+    USER_NICK_NAME, SALT, USER_SEX, RAMARK, PWD,IP
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -84,6 +85,9 @@
       <if test="pwd != null">
         PWD,
       </if>
+       <if test="ip != null">
+        IP,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -125,6 +129,9 @@
       <if test="pwd != null">
         #{pwd,jdbcType=VARCHAR},
       </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.lhj.gogo.admin.model.SystemUser">
@@ -165,6 +172,9 @@
       </if>
       <if test="pwd != null">
         PWD = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        IP = #{ip,jdbcType=VARCHAR},
       </if>
     </set>
     where ID = #{id,jdbcType=VARCHAR}

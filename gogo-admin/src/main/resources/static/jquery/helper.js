@@ -264,7 +264,7 @@ var gogoing = function() {
 		/* 打开模态窗口 */
 		ShowModalWin:function(url,width,heigth,paramObj,submitFn,modalClass){
 			var id = getModalId(url);
-			
+			debugger;
 			eleId = 'primary_'+id;
 			eleContentId = 'content'+id;
 			
@@ -287,6 +287,7 @@ var gogoing = function() {
 				url : url,
 				async : false,
 				success : function(msg) {
+					debugger;
 					$("#"+obj.eleContentId).html(msg);
 				}
 

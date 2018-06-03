@@ -13,6 +13,8 @@
     <result column="RESOURCE_CODE" jdbcType="VARCHAR" property="resourceCode" />
     <result column="YEAR_TYPE" jdbcType="VARCHAR" property="yearType" />
     <result column="CLICK" jdbcType="INTEGER" property="click" />
+    <result column="STATIC_VALUE" jdbcType="VARCHAR" property="staticValue" />
+    
   </resultMap>
   <sql id="Base_Column_List">
     ID, RESOURCE_NAME, RESOURCE_TYPE, RESOURCE_PATH_TYPE, RESOURCE_PATH, REMARK, STATE, 
@@ -163,11 +165,14 @@
   
   <select id="selectResourceList" parameterType="com.lhj.gogo.admin.model.GogoResource" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List" />
-    from gogo_resource
+     GR.ID, RESOURCE_NAME, RESOURCE_TYPE, RESOURCE_PATH_TYPE, RESOURCE_PATH, REMARK, GR.STATE, 
+    CREATE_TIME, RESOURCE_CODE, YEAR_TYPE, CLICK,STATIC_VALUE
+    from gogo_resource GR
+     LEFT JOIN sys_static  SS ON GR.RESOURCE_TYPE = SS.STATIC_KEY
+AND SS.STATIC_TYPE = "resources" AND SS.STATE = "10A"
     <where>
        <if test="resourceType != null">
-        RESOURCE_TYPE = #{resourceType,jdbcType=VARCHAR}
+       AND RESOURCE_TYPE = #{resourceType,jdbcType=VARCHAR}
       </if>
        <if test="yearType != null">
       AND  YEAR_TYPE = #{yearType,jdbcType=VARCHAR}

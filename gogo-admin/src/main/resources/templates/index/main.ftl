@@ -3,17 +3,14 @@
 
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-<!-- 不缓存，测试阶段，后面上线可去掉 -->
-<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
-<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
-<META HTTP-EQUIV="Expires" CONTENT="0"> 
-<!-- 不缓存，测试阶段，后面上线可去掉 -->
+
 
 <head>
 <#include "index-head.ftl">	
 <style type="text/css">
         
   </style>
+  <script type="text/javascript" src="/jquery/index.js"></script>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <body>
@@ -23,95 +20,35 @@
 			 <div class="row">
 				 <#include "title.ftl">	
 			 </div>
-			 <div class="div-top">
-			 <div class="row" id="divc-top">
-				  <div class="col-md-7">
-				  	<div >
-					        <img height="120" width="652" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3180016488,1208322054&fm=27&gp=0.jpg" alt="First slide">
-					    </div>
-				  </div>
-				  <div class="col-md-5">
-				  		 <div class="row">
-				  		   	<div class="col-md-12">
-					  		   <form  role="form" id="form1">
-						  		   <div class="row">
-						  		   <div class="col-md-12">
-									 <div class="form-group">
-									    <label for="inputPassword" class="col-sm-5 control-label text-right"">账号：</label>
-									    <div class="col-sm-7">
-									      <input type="text" class="form-control input-sm" id="name" placeholder="请输入账号" >
-									    </div>
-									  </div>
-									  </div>
-									 
-								    </div>
-								     <div class="row">
-								       &nbsp;
-								  </div>
-								  <div class="row">
-								 <div class="col-md-12">
-								  
-									  <div class="form-group">
-									    <label for="inputPassword" class="col-sm-5 control-label text-right"">密码：</label>
-									    <div class="col-sm-7">
-									      <input type="password" class="form-control input-sm" id="inputPassword" placeholder="请输入密码">
-									    </div>
-									  </div>
-									  </div>
-								    </div>
-								     <div class="row">
-								       &nbsp;
-								  </div>
-								  <div class="row">
-								  <div class="col-md-4">
-								  &nbsp;
-								  </div>
-								   <div class="col-md-5">
-									  <div class="form-group">
-										  <div class="checkbox">
-									        <label>
-									          <input type="checkbox">请记住我
-									        </label>
-									      </div>
-									  </div>
-									   </div>
-								  
-									  <div class="col-md-2">
-									  <div class="form-group">
-									      <button type="submit" class="btn btn-default" onclick="login()">登录</button>
-									  </div>
-									  </div>
-								    </div>
-								</form>
-				  		     </div>
-				  		  </div>
-				  		
-				  </div>
-			 </div>
-		
-		<#include "left.ftl">
 		<hr>
-		<nav class="navbar navbar-default" role="navigation">
-		    <div class="container-fluid">
-			    <div class="navbar-header">
-			        <a class="navbar-brand" href="#">资源分类</a>
-			    </div>
-			      <div>
-		       	 <ul class="nav navbar-nav">
-		            <li class="active"><a href="#">iOS</a></li>
-		            <li><a href="#">SVN</a></li>
-		            <li class="dropdown">
-		                <a href="#" >
-		                    Java 
-		                </a>
+			 <div class="row">
+		         <div class="col-md-8">
+				<nav class="navbar navbar-default" role="navigation">
+				    <div class="container-fluid">
+					    <div class="navbar-header">
+					        <a class="navbar-brand" href="#">模块分类</a>
+					    </div>
+					      <div>
+				       	 <ul class="nav navbar-nav">
+				            <li class="active"><a href="#">资源区</a></li>
+				            <li><a href="#">讨论组</a></li>
+				        </ul>
 		            </li>
 		        </ul>
-            </li>
-        </ul>
-        <p class="navbar-text navbar-right">向右对齐-文本</p>
-		    </div>
-	    </div>
-	</nav>
+				    </div>
+			    </div>
+			</nav>
+			</div>
+         <div class="col-md-4">
+			 <nav class="navbar navbar-default" role="navigation"> 
+			    <div class="container-fluid"> 
+			        <div class="navbar-header"> 
+			            <a class="navbar-brand" href="#">系统通告</a> 
+			        </div> 
+			    </div> 
+			</nav>
+			</div>
+		</div>
         <div class="row">
          <div class="col-md-4" id="boack" height="100">
 	            <div id="myCarousel" class="carousel slide">
@@ -144,12 +81,9 @@
 			 </div>
             <div class="col-md-4" id="boack" height="100">
 	        	<ul class="nav nav-pills" role="tablist">
-				  <li class="active"><a href="#">Home</a>
+				  <li class="active"><a href="#">最新</a>
 				  </li>
-				  <li><a href="#">SVN</a></li>
-				  <li><a href="#">iOS</a></li>
-				  <li><a href="#">Java</a></li>
-				  <li><a href="#">PHP</a></li>
+				  <li><a href="#">点击量最多</a></li>
 				</ul>
 				   <ol id="ul-resList">
 					  <li>Item 1</li>
@@ -159,9 +93,10 @@
 					</ol>
             </div>
             <div class="col-md-4" id="boack" height="100">
-                <p>asdfadsfaasdfasdf
+           
+                <h5>asdfadsfaasdfasdf
                     阿斯顿发的事发adfasdf都发生地方阿斯顿发撒的发生到付asdfasdfa阿斯顿发撒的发爱的色放
-                    asdfasdfa爱的色放阿斯顿发asdfasdfa爱的色放爱迪生法定 沙发电视发生的发生的f</p>
+                    asdfasdfa爱的色放阿斯顿发asdfasdfa爱的色放爱迪生法定 沙发电视发生的发生的f</h5>
                 <div class="row">
                     <!--如果是字母，这里的换行是以空格来换行的，如果是一串字母的话 就不会换行-->
                     <!--如果是汉字，这里的换行是汉字来换行的-->
@@ -173,11 +108,10 @@
         <hr>
      	<div class="row">
 			<ul class="nav nav-pills" role="tablist">
-				  <li class="active"><a href="#dman_Table"  onclick="winOnload()" data-toggle="tab">Home</a></li>
-				  <li><a href="#movie_Table" data-toggle="tab">SVN</a></li>
-				  <li><a href="#book_Table" onclick="winBookloadClick()" data-toggle="tab">iOS</a></li>
-				  <li><a href="#">Java</a></li>
-				  <li><a href="#">PHP</a></li>
+				  <li class="active"><a href="#dman_Table"  onclick="winOnload()" data-toggle="tab">教学视频</a></li>
+				  <li><a href="#movie_Table" data-toggle="tab">电影</a></li>
+				  <li><a href="#book_Table" onclick="winBookloadClick()" data-toggle="tab">书籍</a></li>
+				  <li><a href="#">里番</a></li>
 				</ul>
 		 </div>
 		  <hr>

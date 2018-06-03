@@ -33,7 +33,17 @@ public class GogoResource extends PageBean implements Serializable{
 
     private int click;
     
+    private String staticValue;
     
+    
+
+	public String getStaticValue() {
+		return staticValue;
+	}
+
+	public void setStaticValue(String staticValue) {
+		this.staticValue = staticValue;
+	}
 
 	public int getClick() {
 		return click;

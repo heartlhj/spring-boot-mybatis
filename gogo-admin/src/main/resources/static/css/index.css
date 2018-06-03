@@ -1,4 +1,4 @@
-﻿html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,input,textarea,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,footer,header,hgroup,menu,nav,section,menu,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;background:transparent}
+﻿html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,input,textarea,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,footer,header,hgroup,menu,nav,section,menu,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;background:transparent}
 article,aside,figure,footer,header,hgroup,nav,section{display:block}
 nav ul{list-style:none}
 blockquote,q{quotes:none}
@@ -90,7 +90,6 @@ body{	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Ari
 .v5-input-txt #id_mobile_code_f{width:170px;border-radius:0;margin-right:24px}
 .v5-input-txt .send-verify{width:144px;height:42px;line-height:30px;background:#5ecfb5;color:#fff;text-align:center;padding:0;cursor:pointer;border:0}
 .v5-input-txt .btn{padding-bottom:8px;padding-top:8px}
-.btn{background:#5ecfba;border-color:#5ecfba;color:#fff}
 .btn-micv5{background-color:#5ecfba;color:#fff;padding:8px 12px}
 .modal-header{color:#5ecfba}
 .tips-box{width:100%;display:inline-block;position:relative}
